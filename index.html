@@ -124,7 +124,170 @@
             opacity:0;
         }
     }
+/* COMETA */
 
+.comet{
+    position:absolute;
+
+    bottom:-150px;
+    left:-250px;
+
+    width:320px;
+    height:4px;
+
+    background:linear-gradient(
+        90deg,
+        rgba(255,255,255,1),
+        rgba(255,255,255,0)
+    );
+
+    border-radius:50%;
+
+    transform:rotate(-35deg);
+
+    box-shadow:
+        0 0 10px white,
+        0 0 25px #8fd3ff,
+        0 0 50px #4fc3ff;
+
+    animation:cometFly 10s linear infinite;
+}
+
+/* Núcleo brillante */
+
+.comet::before{
+    content:"";
+
+    position:absolute;
+    right:0;
+    top:-4px;
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:white;
+
+    box-shadow:
+        0 0 10px white,
+        0 0 20px #8fd3ff,
+        0 0 40px #4fc3ff;
+}
+
+@keyframes cometFly{
+
+    0%{
+        transform:
+        translate(0,0)
+        rotate(-35deg);
+
+        opacity:0;
+    }
+
+    10%{
+        opacity:1;
+    }
+
+    /* PASA CERCA DEL SOL */
+
+    50%{
+        transform:
+        translate(900px,-700px)
+        rotate(-35deg);
+
+        opacity:1;
+    }
+
+    /* SALE DE PANTALLA */
+
+    100%{
+        transform:
+        translate(1800px,-1200px)
+        rotate(-35deg);
+
+        opacity:0;
+    }
+}
+/* EXPLOSIÓN SOLAR */
+
+.solar-explosion{
+    position:absolute;
+
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(255,255,255,1) 0%,
+        rgba(255,220,100,1) 30%,
+        rgba(255,140,0,0.8) 60%,
+        rgba(255,80,0,0) 100%
+    );
+
+    top:42%;
+    left:52%;
+
+    transform:translate(-50%,-50%) scale(0);
+
+    box-shadow:
+        0 0 30px #ffd000,
+        0 0 60px #ff8800,
+        0 0 120px #ff5500;
+
+    animation:solarBlast 10s infinite;
+}
+
+@keyframes solarBlast{
+
+    0%{
+        transform:
+        translate(-50%,-50%)
+        scale(0);
+
+        opacity:0;
+    }
+
+    /* El cometa se acerca */
+
+    45%{
+        transform:
+        translate(-50%,-50%)
+        scale(0);
+
+        opacity:0;
+    }
+
+    /* EXPLOSIÓN */
+
+    50%{
+        transform:
+        translate(-50%,-50%)
+        scale(3);
+
+        opacity:1;
+    }
+
+    /* Se desvanece */
+
+    60%{
+        transform:
+        translate(-50%,-50%)
+        scale(5);
+
+        opacity:0;
+    }
+
+    100%{
+        transform:
+        translate(-50%,-50%)
+        scale(0);
+
+        opacity:0;
+    }
+}
     /* Núcleo del sol */
     .sun{
         position:absolute;
@@ -196,7 +359,8 @@
 </head>
 
 <body>
-
+<div class="comet"></div>
+<div class="solar-explosion"></div>
 <div class="stars"></div>
 
 <audio autoplay loop>
