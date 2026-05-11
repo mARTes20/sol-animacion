@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Creación del Sol</title>
+
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        overflow:hidden;
+        background:
+        radial-gradient(circle at center,
+        #1b2735 0%,
+        #090a0f 70%);
+    }
+
+    .scene{
+        position:relative;
+        width:400px;
+        height:400px;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+    }
+
+    /* Partículas */
+    .particle{
+        position:absolute;
+        width:8px;
+        height:8px;
+        background:#ffb347;
+        border-radius:50%;
+        box-shadow:0 0 10px #ff9900;
+        animation:orbit 4s linear infinite,
+                   collapse 4s ease-in-out infinite;
+    }
+
+    .particle:nth-child(1){ transform:rotate(0deg) translateX(160px);}
+    .particle:nth-child(2){ transform:rotate(30deg) translateX(160px);}
+    .particle:nth-child(3){ transform:rotate(60deg) translateX(160px);}
+    .particle:nth-child(4){ transform:rotate(90deg) translateX(160px);}
+    .particle:nth-child(5){ transform:rotate(120deg) translateX(160px);}
+    .particle:nth-child(6){ transform:rotate(150deg) translateX(160px);}
+    .particle:nth-child(7){ transform:rotate(180deg) translateX(160px);}
+    .particle:nth-child(8){ transform:rotate(210deg) translateX(160px);}
+    .particle:nth-child(9){ transform:rotate(240deg) translateX(160px);}
+    .particle:nth-child(10){ transform:rotate(270deg) translateX(160px);}
+    .particle:nth-child(11){ transform:rotate(300deg) translateX(160px);}
+    .particle:nth-child(12){ transform:rotate(330deg) translateX(160px);}
+
+    @keyframes collapse{
+        0%{
+            transform:rotate(var(--r)) translateX(160px) scale(1);
+            opacity:1;
+        }
+
+        70%{
+            transform:rotate(var(--r)) translateX(30px) scale(1.5);
+            opacity:1;
+        }
+
+        100%{
+            transform:rotate(var(--r)) translateX(0px) scale(0);
+            opacity:0;
+        }
+    }
+
+    /* Núcleo del sol */
+    .sun{
+        position:absolute;
+        width:0;
+        height:0;
+        border-radius:50%;
+        background:radial-gradient(circle,
+        #fff7b1 0%,
+        #ffd000 40%,
+        #ff7b00 70%,
+        #ff3c00 100%);
+        box-shadow:
+            0 0 20px #ffae00,
+            0 0 50px #ff8400,
+            0 0 100px #ff5e00;
+        animation:createSun 10s ease-in-out infinite;
+    }
+
+    @keyframes createSun{
+        0%{
+            width:0;
+            height:0;
+            opacity:0;
+        }
+
+        40%{
+            width:0;
+            height:0;
+            opacity:0;
+        }
+
+        70%{
+            width:120px;
+            height:120px;
+            opacity:1;
+        }
+
+        100%{
+            width:140px;
+            height:140px;
+            opacity:1;
+        }
+    }
+
+    /* Brillo externo */
+    .glow{
+        position:absolute;
+        width:160px;
+        height:160px;
+        border-radius:50%;
+        background:rgba(255,140,0,0.15);
+        filter:blur(20px);
+        animation:pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse{
+        0%,100%{
+            transform:scale(1);
+            opacity:0.7;
+        }
+
+        50%{
+            transform:scale(1.15);
+            opacity:1;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+
+<div class="scene">
+
+    <div class="particle" style="--r:0deg"></div>
+    <div class="particle" style="--r:30deg"></div>
+    <div class="particle" style="--r:60deg"></div>
+    <div class="particle" style="--r:90deg"></div>
+    <div class="particle" style="--r:120deg"></div>
+    <div class="particle" style="--r:150deg"></div>
+    <div class="particle" style="--r:180deg"></div>
+    <div class="particle" style="--r:210deg"></div>
+    <div class="particle" style="--r:240deg"></div>
+    <div class="particle" style="--r:270deg"></div>
+    <div class="particle" style="--r:300deg"></div>
+    <div class="particle" style="--r:330deg"></div>
+
+    <div class="glow"></div>
+    <div class="sun"></div>
+
+</div>
+
+</body>
+</html>
