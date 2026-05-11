@@ -23,7 +23,57 @@
         #1b2735 0%,
         #090a0f 70%);
     }
+/* Fondo de estrellas */
 
+.stars{
+    position:absolute;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.stars::before,
+.stars::after{
+    content:"";
+    position:absolute;
+    width:2px;
+    height:2px;
+    background:white;
+
+    box-shadow:
+    100px 200px white,
+    300px 100px white,
+    500px 400px white,
+    700px 250px white,
+    900px 150px white,
+    1200px 300px white,
+    1400px 500px white,
+    1600px 200px white,
+    1800px 100px white,
+    200px 500px white,
+    450px 650px white,
+    800px 700px white,
+    1000px 600px white,
+    1300px 750px white;
+
+    animation:twinkle 4s infinite alternate;
+}
+
+.stars::after{
+    transform:scale(1.5);
+    opacity:0.5;
+    animation-duration:7s;
+}
+
+@keyframes twinkle{
+    0%{
+        opacity:0.2;
+    }
+
+    100%{
+        opacity:1;
+    }
+}
     .scene{
         position:relative;
         width:400px;
@@ -146,6 +196,12 @@
 </head>
 
 <body>
+
+<div class="stars"></div>
+
+<audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=space-ambient-110397.mp3" type="audio/mpeg">
+</audio>
 
 <div class="scene">
 
